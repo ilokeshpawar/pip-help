@@ -78,10 +78,10 @@ def main():
             )
 
         if os.path.exists(log_dest_path()):
-           if len(os.listdir(log_dest_path())) == 1:
-               shutil.rmtree(log_dest_path())
-           else:
-               pass
+            if len(os.listdir(log_dest_path())) == 1:
+                shutil.rmtree(log_dest_path())
+            else:
+                pass
 
 
 if __name__ == "__main__":
