@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "Lokesh Pawar", email = "lokesh.pawar@dozee.io" }
 ]
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = []
 
 [project.scripts]
