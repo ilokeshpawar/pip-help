@@ -8,7 +8,6 @@ def log_dest_path() -> Path:
     log_dest_path = os.path.join(os.path.expanduser("~"), "pip_help_logs")
     if not os.path.exists(log_dest_path):
         os.makedirs(log_dest_path)
-    Path.touch(f"{log_dest_path}/readme.md", exist_ok=True)
     with open(f"{log_dest_path}/readme.md", "w") as file:
         file.write(
             "This directory contains logs of all the packages installed and removed using the pip-help command. Remove this directory if you are not using the pip-help command anymore."
