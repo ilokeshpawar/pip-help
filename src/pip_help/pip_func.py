@@ -19,7 +19,7 @@ File = TypeVar("File", str, Path)
 
 
 def install(pip_package: str) -> None:
-    log_path = log_dest_path() + f"/pip_{pip_package}.txt"
+    log_path = os.path.join(log_dest_path(), f"pip_{pip_package}.txt")
     package = subprocess.call(
         ["pip", "install", pip_package, "--log", log_path, "--quiet"]
     )
@@ -27,7 +27,7 @@ def install(pip_package: str) -> None:
 
 
 def installed_packages_list(pip_package: str) -> File:
-    target_path = log_dest_path() + f"/pip_{pip_package}.txt"
+    target_path = os.path.join(log_dest_path(), f"pip_{pip_package}.txt")
     validation = False
     with open(target_path, "r") as file:
         possible_packages = []
