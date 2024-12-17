@@ -20,7 +20,9 @@ jobs:
               uses: ./.github/actions/lint_test_action
 
     build_on_pr_close:
+        needs: checks
         runs-on: ubuntu-latest
+        if : github.event_name == 'pull_request' && github.event.action == 'closed'
         steps:
             - name: Checkout code
               uses: actions/checkout@v3
