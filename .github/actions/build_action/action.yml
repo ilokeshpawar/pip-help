@@ -16,8 +16,8 @@ runs:
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        path: "dist/"
-      # env:
-      #   WHEEL_SRC_PATH: "./dist"
+        path: ${{ env.WHEEL_SRC_PATH }}
+      env:
+        WHEEL_SRC_PATH: "dist/"
       
     
