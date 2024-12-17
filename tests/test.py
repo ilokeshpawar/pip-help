@@ -3,7 +3,8 @@
 import os
 from subprocess import getstatusoutput
 
-prg = "pip_help/main.py"
+prg = "src/pip_help/main.py"
+target_path = (os.path.join(os.path.expanduser("~"),  "pip_help_logs"))
 
 
 def test_pip_help_exists():
@@ -35,7 +36,7 @@ def test_dir_creation():
 
     rv, out = getstatusoutput(f"python {prg} --install requests")
     assert rv == 0
-    assert os.path.isdir("pip_help_logs")
+    assert os.path.isdir(target_path)
 
 
 def test_dir_deletion():
@@ -45,6 +46,6 @@ def test_dir_deletion():
 
     rv, out = getstatusoutput(f"python {prg} --remove requests")
     assert rv == 0
-    assert not os.path.isdir("pip_help_logs")
+    assert not os.path.isdir(target_path)
 
     
