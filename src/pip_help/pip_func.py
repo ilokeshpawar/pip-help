@@ -2,7 +2,7 @@ import subprocess
 import os
 from pathlib import Path
 from typing import TypeVar
-import time
+# import time
 
 
 def log_dest_path() -> Path:
@@ -29,6 +29,7 @@ def install(pip_package: str) -> None:
 
 def installed_packages_list(pip_package: str) -> File:
     target_path = os.path.join(log_dest_path(), f"pip_{pip_package}.txt")
+    temp_file = target_path + ".temp"
     validation = False
     with open(target_path, "r") as file:
         possible_packages = []
@@ -65,7 +66,8 @@ def installed_packages_list(pip_package: str) -> File:
 
                 if validation:
                     try:
-                        time.sleep(20)
+                        # time.sleep(20)
+                        os.rename(target_path, temp_file)
                         os.remove(target_path)
                     except PermissionError as e:
                         print(
