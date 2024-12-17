@@ -1,0 +1,22 @@
+name: Runs test and checks formatting
+run-name: Run tests and linters
+
+on:
+    push:
+    pull_request:
+        branches:
+            - main
+        types:
+            - closed
+
+jobs:
+    checks:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+            
+            - name: tests and linters
+              uses: ./.github/actions/lint_test_action
+              with:
+                  run-name: Run tests and linters
