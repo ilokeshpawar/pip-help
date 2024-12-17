@@ -11,7 +11,7 @@ runs:
     - name: Run tests
       shell: bash
       run: |
-        uv run coverage run -m pytest
+        uv run coverage run -m pytest -xv ./tests/test.py
         uv run coverage report
         uv run coverage html
     - name: Linting
