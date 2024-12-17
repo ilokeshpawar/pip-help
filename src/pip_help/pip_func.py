@@ -2,6 +2,7 @@ import subprocess
 import os
 from pathlib import Path
 from typing import TypeVar
+import time
 
 
 def log_dest_path() -> Path:
@@ -63,7 +64,13 @@ def installed_packages_list(pip_package: str) -> File:
                     print(f"Error: {e}")
 
                 if validation:
-                    os.remove(target_path)
+                    try:
+                        time.sleep(20)
+                        os.remove(target_path)
+                    except PermissionError as e:
+                        print(
+                            f"Error: {e}. Please close the file and try again to remove the file."
+                        )
 
 
 def uninstall(pip_package: str) -> None:
