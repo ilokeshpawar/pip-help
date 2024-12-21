@@ -30,7 +30,7 @@ jobs:
         runs-on: ubuntu-latest
         environment:
             name: pypi
-            url: https://test.pypi.org/p/pip-help
+            url: https://pypi.org/p/pip-help
 
         permissions:
             id-token: write
