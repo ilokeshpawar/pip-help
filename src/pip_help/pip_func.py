@@ -40,7 +40,7 @@ def installed_packages_list(pip_package: str) -> File:
             if word in target_line:
                 possible_packages.append(target_line)
         file.close()
-        print(f"is file pip_{pip_package}.txt closed?: ", file.closed)
+
         if len(possible_packages) == 0:
             print("-" * 66)
             print(

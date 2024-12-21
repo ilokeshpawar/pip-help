@@ -47,15 +47,15 @@ def main():
         for package in package_install:
             pkg_exist = pkg_on_pypi(package)
             if pkg_exist is True:
-            try:
+                try:
                     print("*" * 66)
                     print(f"Installing {package}...")
-                install(package)
-            except TypeError as e:
-                print(f"Error: {e}")
-            finally:
-                installed_packages_list(package)
-    else:
+                    install(package)
+                except TypeError as e:
+                    print(f"Error: {e}")
+                finally:
+                    installed_packages_list(package)
+            else:
                 print("*" * 66)
                 print(
                     f"WARNING: Make sure {package} is a valid package name. Please try again."
