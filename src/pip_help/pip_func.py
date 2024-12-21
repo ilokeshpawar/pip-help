@@ -42,6 +42,7 @@ def installed_packages_list(pip_package: str) -> File:
         file.close()
         print(f"is file pip_{pip_package}.txt closed?: ", file.closed)
         if len(possible_packages) == 0:
+            print("-" * 66)
             print(
                 f'WARINING: Package {pip_package.upper()} is already installed. it is recommended to uninstall "{pip_package}" and related packages before installing it again. To uninstall "{pip_package}" and related packages, run the command: \'pip-help --remove/-r {pip_package}\''
             )
@@ -54,7 +55,7 @@ def installed_packages_list(pip_package: str) -> File:
                     for target in target_packages:
                         package_name = target.strip().split(",")[0]
                         dependent_packages.append(package_name)
-            print(f"Installed packages: {dependent_packages}")
+            print(f"{dependent_packages[-1]} is successfully installed!")
 
             with open((log_dest_path() + f"/pip_{pip_package}_list.txt"), "w") as file:
                 try:
