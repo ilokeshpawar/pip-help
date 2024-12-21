@@ -2,7 +2,7 @@ import subprocess
 import os
 from pathlib import Path
 from typing import TypeVar
-# import time
+import requests
 
 
 def log_dest_path() -> Path:
@@ -93,3 +93,12 @@ def uninstall(pip_package: str) -> None:
 def delete_pip_cache() -> None:
     clear_cache = subprocess.call(["pip", "cache", "purge"])
     return clear_cache
+
+
+def pkg_on_pypi(pip_package: str) -> bool:
+    request_api = requests.get(f"https://pypi.org/pypi/{pip_package}/json/")
+    response = request_api.status_code
+    if response == 200:
+        return True
+    else:
+        return False

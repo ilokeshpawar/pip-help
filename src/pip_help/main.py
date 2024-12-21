@@ -9,6 +9,7 @@ from pip_help.pip_func import (
     uninstall,
     delete_pip_cache,
     log_dest_path,
+    pkg_on_pypi,
 )
 
 
