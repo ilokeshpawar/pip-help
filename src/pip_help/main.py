@@ -9,6 +9,7 @@ from pip_help.pip_func import (
     uninstall,
     delete_pip_cache,
     log_dest_path,
+    pkg_on_pypi,
 )
 
 
@@ -44,17 +45,33 @@ def main():
 
     if package_install:
         for package in package_install:
-            try:
-                install(package)
-            except TypeError as e:
-                print(f"Error: {e}")
-            finally:
-                installed_packages_list(package)
+            pkg_exist = pkg_on_pypi(package)
+            if pkg_exist is True:
+                try:
+                    print("*" * 66)
+                    print(f"Installing {package}...")
+                    install(package)
+                except TypeError as e:
+                    print(f"Error: {e}")
+                finally:
+                    installed_packages_list(package)
+            else:
+                print("*" * 66)
+                print(
+                    f"WARNING: Make sure {package} is a valid package name. Please try again."
+                )
+            print(
+                f"NOTE!: {package} is not a valid package name."
+                if not pkg_exist
+                else ""
+            )
     else:
         if package_remove:
             for package in package_remove:
                 try:
+                    print("*" * 45)
                     uninstall(package)
+                    print("*" * 45)
                     cache = input(
                         "Do you want to delete the pip cache? (y/n): "
                     ).lower()

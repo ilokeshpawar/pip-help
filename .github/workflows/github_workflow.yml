@@ -2,7 +2,7 @@ name: Runs test and checks formatting
 run-name: Github workflow by ${{ github.triggering_actor}}
 
 on:
-    push:
+    # push:
     pull_request:
         branches:
             - main

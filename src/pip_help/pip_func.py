@@ -2,7 +2,7 @@ import subprocess
 import os
 from pathlib import Path
 from typing import TypeVar
-# import time
+import requests
 
 
 def log_dest_path() -> Path:
@@ -29,7 +29,6 @@ def install(pip_package: str) -> None:
 
 def installed_packages_list(pip_package: str) -> File:
     target_path = os.path.join(log_dest_path(), f"pip_{pip_package}.txt")
-    # temp_file = target_path + ".temp"
     validation = False
     with open(target_path, "r") as file:
         possible_packages = []
@@ -40,10 +39,10 @@ def installed_packages_list(pip_package: str) -> File:
             word = "installing"
             if word in target_line:
                 possible_packages.append(target_line)
-        # print(f"Possible packages: {possible_packages}")
         file.close()
-        print(f"is file pip_{pip_package}.txt closed?: ", file.closed)
+
         if len(possible_packages) == 0:
+            print("-" * 66)
             print(
                 f'WARINING: Package {pip_package.upper()} is already installed. it is recommended to uninstall "{pip_package}" and related packages before installing it again. To uninstall "{pip_package}" and related packages, run the command: \'pip-help --remove/-r {pip_package}\''
             )
@@ -56,7 +55,7 @@ def installed_packages_list(pip_package: str) -> File:
                     for target in target_packages:
                         package_name = target.strip().split(",")[0]
                         dependent_packages.append(package_name)
-            print(f"Installed packages: {dependent_packages}")
+            print(f"{dependent_packages[-1]} is successfully installed!")
 
             with open((log_dest_path() + f"/pip_{pip_package}_list.txt"), "w") as file:
                 try:
@@ -68,8 +67,6 @@ def installed_packages_list(pip_package: str) -> File:
 
                 if validation:
                     try:
-                        # time.sleep(20)
-                        # os.rename(target_path, temp_file)
                         os.remove(target_path)
                     except PermissionError as e:
                         print(
@@ -93,3 +90,12 @@ def uninstall(pip_package: str) -> None:
 def delete_pip_cache() -> None:
     clear_cache = subprocess.call(["pip", "cache", "purge"])
     return clear_cache
+
+
+def pkg_on_pypi(pip_package: str) -> bool:
+    request_api = requests.get(f"https://pypi.org/pypi/{pip_package}/json/")
+    response = request_api.status_code
+    if response == 200:
+        return True
+    else:
+        return False
