@@ -1,6 +1,9 @@
 # pip-help
 pip-help is a command line tool for temporarily installing packages.
 
+- **Source Code:** https://github.com/ilokeshpawar/pip-help
+- **Bug reports:** https://github.com/ilokeshpawar/pip-help/issues
+
 ## Problem:
 - It often happens that for some tasks, you have to install a `<package>` on your system. During that process, you end up downloading many `<dependent_packages>` which you might not require once the task is finished.
 
@@ -15,7 +18,7 @@ pip-help is a command line tool for temporarily installing packages.
 - `pip install pip-help`
 
 ## Getting Started
-Currently, it provides support for installing and uninstalling a <package> (let's consider that the package name is `"matplotlib"`)and its <dependent_packages>.
+Currently, it provides support for installing and uninstalling a single or multiple `<packages>`. let's consider that the package name is `"matplotlib"`and its <dependent_packages>.
 
 - Use the flag `-h/--help` for further information.
 
