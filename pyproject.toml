@@ -1,10 +1,10 @@
 [project]
 name = "pip-help"
-version = "1.0.0"
+version = "1.0.1"
 description = "pip-help is a command line tool for temporarily installing packages."
 readme = "README.md"
 authors = [
-    { name = "Lokesh Pawar", email = "lokesh.pawar@dozee.io" }
+    { name = "Lokesh Pawar", email = "ilokeshpawar@gmail.com" }
 ]
 requires-python = ">=3.13"
 dependencies = [
