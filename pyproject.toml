@@ -1,6 +1,6 @@
 [project]
 name = "pip-help"
-version = "1.0.2"
+version = "1.0.3"
 description = "pip-help is a command line tool for temporarily installing packages."
 readme = "README.md"
 authors = [
