@@ -1,4 +1,5 @@
 name: Python package installation
+run-name: Python package installation
 
 on: [push]
 
@@ -28,5 +29,11 @@ jobs:
         if: ${{ matrix.os == 'windows-latest' }}
         run: |
           python -V >> results.txt
+
+      - name: Upload results
+        uses: actions/upload-artifact@v3
+        with:
+          name: results
+          path: results.txt
 
           
