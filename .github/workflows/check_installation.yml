@@ -17,6 +17,16 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
+      - name: Display Python version on mac and linux
+        shell: bash
+        if: ${{ matrix.os == 'ubuntu-latest' }} or ${{ matrix.os == 'macos-latest' }}
+        run: |
+          python --version >> results.txt
+        
+      - name: Display Python version on windows
+        shell: powershell
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: |
+          python -V >> results.txt
+
           
