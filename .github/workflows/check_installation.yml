@@ -28,12 +28,12 @@ jobs:
         shell: powershell
         if: ${{ matrix.os == 'windows-latest' }}
         run: |
-          python -V >> results.txt
+          python -V 1>>win_results.txt
 
       - name: Upload results
         uses: actions/upload-artifact@v3
         with:
           name: results
-          path: results.txt
+          path: *.txt
 
           
