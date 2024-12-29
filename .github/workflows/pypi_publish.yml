@@ -99,10 +99,9 @@ jobs:
         # and release version is set manually
         run: >-
           gh release create
-          # '${{ github.ref_name }}'
-          v1.0.3
-          --repo '${{ github.repository }}'
-          --notes ""
+          v1.0.3.1
+          # --repo '${{ github.repository }}'
+          # --notes ""
       - name: Upload artifact signatures to GitHub Release
         env:
           GITHUB_TOKEN: ${{ github.token }}
