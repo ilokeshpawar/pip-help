@@ -16,7 +16,7 @@ runs:
       shell: bash
       id: run
       run: |
-        uv tool install ./dist/pip_help-1.0.3-py3-none-any.whl
+        uv tool install ./dist/pip_help-1.0.3.1-py3-none-any.whl
     - name: Test installation
       shell: bash
       if: steps.run.outcome == 'success'
