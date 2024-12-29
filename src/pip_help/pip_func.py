@@ -24,6 +24,7 @@ def install(pip_package: str) -> None:
     package = subprocess.call(
         ["pip", "install", pip_package, "--log", log_path, "--quiet"]
     )
+    print(f"Saving logs temporarily at: {log_dest_path()}")
     return package
 
 
