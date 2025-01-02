@@ -1,7 +1,8 @@
 name: Python package installation
+description: Install and test latest version across multiple Python versions and os platforms
 
 runs:
-  using: 'composite'
+  using: "composite"
 
   steps:
     - name: Install uv
@@ -22,6 +23,3 @@ runs:
       if: steps.run.outcome == 'success'
       run: |
         echo "Installation successful"
-
-
-          
